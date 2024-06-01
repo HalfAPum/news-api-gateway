@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-route
+          uri: ${USER_ROUTE_URI:https://localhost:8081}
+          predicates:
+            - Path=/user/**
+          filters:
+            - AddResponseHeader=X-Powered-By, San API Gateway
+
+        - id: news-route
+          uri: ${NEWS_ROUTE_URI:https://localhost:8082}
+          predicates:
+            - Path=/news/**
+          filters:
+            - AddResponseHeader=X-Powered-By, San API Gateway
+
+        - id: comments-route
+          uri: ${COMMENTS_ROUTE_URI:https://localhost:8083}
+          predicates:
+            - Path=/comments/**
+          filters:
+            - AddResponseHeader=X-Powered-By, San API Gateway
+
+        - id: chat-route
+          uri: ${CHAT_ROUTE_URI:https://localhost:8084}
+          predicates:
+            - Path=/chat/**
+          filters:
+            - AddResponseHeader=X-Powered-By, San API Gateway
